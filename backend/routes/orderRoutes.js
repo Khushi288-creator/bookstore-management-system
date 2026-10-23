@@ -1,13 +1,28 @@
 const express = require('express');
 const router = express.Router();
-const { createOrder, getOrders, getOrderById, updateOrderStatus } = require('../controllers/orderController');
+const {
+  createOrder,
+  getMyOrders,
+  getOrders,
+  getOrderById,
+  cancelOrder,
+  updateOrderStatus,
+} = require('../controllers/orderController');
 const { protect } = require('../middleware/auth');
 const { authorize } = require('../middleware/roleCheck');
+const { validateRequest } = require('../middleware/validateRequest');
+const {
+  createOrderRules,
+  orderIdParamRules,
+  updateOrderStatusRules,
+  listOrdersQueryRules,
+} = require('../validators/orderValidators');
 
-// Sab routes login required hain (protect sabse pehle)
-router.post('/', protect, createOrder); // customer order place kare
-router.get('/', protect, authorize('admin'), getOrders); // sirf admin sab orders dekhe
-router.get('/:id', protect, getOrderById); // apna order ya admin
-router.put('/:id/status', protect, authorize('admin'), updateOrderStatus); // sirf admin status update kare
+router.post('/', protect, createOrderRules, validateRequest, createOrder);
+router.get('/my', protect, listOrdersQueryRules, validateRequest, getMyOrders);
+router.get('/', protect, authorize('admin'), listOrdersQueryRules, validateRequest, getOrders);
+router.get('/:id', protect, orderIdParamRules, validateRequest, getOrderById);
+router.put('/:id/cancel', protect, orderIdParamRules, validateRequest, cancelOrder);
+router.put('/:id/status', protect, authorize('admin'), updateOrderStatusRules, validateRequest, updateOrderStatus);
 
 module.exports = router;

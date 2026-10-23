@@ -3,14 +3,19 @@ const router = express.Router();
 const { getBooks, getBookById, createBook, updateBook, deleteBook } = require('../controllers/bookController');
 const { protect } = require('../middleware/auth');
 const { authorize } = require('../middleware/roleCheck');
+const { validateRequest } = require('../middleware/validateRequest');
+const {
+  createBookRules,
+  updateBookRules,
+  bookIdParamRules,
+  listBooksQueryRules,
+} = require('../validators/bookValidators');
 
-// Public routes — koi bhi dekh sakta hai
-router.get('/', getBooks);
-router.get('/:id', getBookById);
+router.get('/', listBooksQueryRules, validateRequest, getBooks);
+router.get('/:id', bookIdParamRules, validateRequest, getBookById);
 
-// Admin-only routes — pehle protect (login check), phir authorize (role check)
-router.post('/', protect, authorize('admin'), createBook);
-router.put('/:id', protect, authorize('admin'), updateBook);
-router.delete('/:id', protect, authorize('admin'), deleteBook);
+router.post('/', protect, authorize('admin'), createBookRules, validateRequest, createBook);
+router.put('/:id', protect, authorize('admin'), updateBookRules, validateRequest, updateBook);
+router.delete('/:id', protect, authorize('admin'), bookIdParamRules, validateRequest, deleteBook);
 
 module.exports = router;
