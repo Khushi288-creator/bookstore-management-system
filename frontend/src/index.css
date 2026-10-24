@@ -1,0 +1,5 @@
+body { background: #f8f9fa; }
+.book-img { height: 220px; object-fit: cover; background: #e9ecef; }
+.hero { background: linear-gradient(135deg, #212529, #495057); color: #fff; border-radius: 12px; }
+.card { transition: box-shadow .15s; }
+.card:hover { box-shadow: 0 .5rem 1rem rgba(0,0,0,.12); }
