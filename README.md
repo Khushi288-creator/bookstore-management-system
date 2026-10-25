@@ -308,11 +308,11 @@ bookstore-management-system/
 ## Author
 
 **Khushi Trivedi**
-GitHub: [@Khushi288-creator](https://github.com/Khushi288-creator)  
- LinkedIn: [khushi-trivedi](https://www.linkedin.com/in/khushi-trivedi-485092323/)
+
+- GitHub: [@Khushi288-creator](https://github.com/Khushi288-creator)
+- LinkedIn: [khushi-trivedi](https://www.linkedin.com/in/khushi-trivedi-485092323/)
 
 Built as part of an internship project on REST API development with the MERN stack.
-
 
 ## Live Links
 
