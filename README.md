@@ -307,12 +307,15 @@ bookstore-management-system/
 
 ## Author
 
-**Khushi**
+**Khushi Trivedi**
 GitHub: [@Khushi288-creator](https://github.com/Khushi288-creator)
+LinkedIn: [khushi-trivedi](https://www.linkedin.com/in/khushi-trivedi-485092323/)
 
 Built as part of an internship project on REST API development with the MERN stack.
 
-## Live Links (after deployment)
+## Live Links 
 
-- Backend: _TBD_
-- Frontend: _TBD_
+## Live Links
+
+* Backend: https://bookstore-management-system-dn5s.onrender.com
+* Frontend: https://bookstore-management-system-peach.vercel.app/
